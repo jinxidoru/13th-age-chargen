@@ -1,14 +1,16 @@
 
 // setup require
 requirejs.config({
-  baseUrl: 'js'
+  baseUrl: 'js',
+  paths: {
+    text: 'vendor/text'
+  }
 });
 
 // main execution loop
-requirejs([
-  'vendor/angular',
-  'vendor/lodash',
-  'vendor/jquery-2.0.3'
-],function() {
-  console.log("Start!");
+requirejs(['ngView!Main'],function(Main) {
+  var rootScope = angular.element($("body")).scope();
+  rootScope.$apply(function() {
+    Main.attach($("div.ng-main"));
+  });
 });
