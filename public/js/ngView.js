@@ -9,21 +9,26 @@ define(function(require) {
     //! Get the template, compiling if necessary.
     var templateFn = function($scope) {
       templateFn = $compile(opts.template);
+      delete opts.template
       return templateFn($scope);
     }
 
     //! Attach this view to the DOM.
     function attach($el) {
 
-      // create the element
+      // create the scope
       var parentScope = angular.element($el).scope();
       var $scope = parentScope.$new(true);
-      var newEl = templateFn($scope);
-      $el.replaceWith(newEl);
 
       // invoke the controller
-      var instance = { element:newEl };
-      opts.controller.apply(instance,[$scope]);
+      if ( opts.controller ) {
+        var instance = { element:newEl };
+        opts.controller.apply(instance,[$scope]);
+      }
+
+      // process the template
+      var newEl = templateFn($scope);
+      $el.replaceWith(newEl);
     }
 
     return {
@@ -34,7 +39,8 @@ define(function(require) {
   // create the plugin
   return {
     load: function(name,req,onload,config) {
-      req([name,'text!Main.html'],function(View,template) {
+      req([name,'text!'+name+'.html'],function(View,template) {
+        View = View || {};
         View.template = template;
         onload(NgView(View));
       });
