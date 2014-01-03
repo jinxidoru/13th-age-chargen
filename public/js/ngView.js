@@ -7,13 +7,6 @@ define(function(require) {
   //! This is the view class
   function NgView(opts) {
 
-    //! Get the template, compiling if necessary.
-    var templateFn = function($scope) {
-      templateFn = $compile(opts.template);
-      delete opts.template
-      return templateFn($scope);
-    }
-
     //! Attach this view to the DOM.
     function attach($el) {
 
@@ -28,8 +21,9 @@ define(function(require) {
       }
 
       // process the template
-      var newEl = templateFn($scope);
+      var newEl = $compile(opts.template)($scope);
       $el.replaceWith(newEl);
+      return newEl;
     }
 
     return {

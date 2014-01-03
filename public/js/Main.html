@@ -1,4 +1,7 @@
 <div>
+  <div jn-widget="Inner"></div>
+  <div jn-widget="Inner"></div>
   Hello <b>{{name}}</b>!
-  <area jn-widget="Inner">
+  <area ng-repeat="x in inners" jn-widget="Inner">
+  <div ng-repeat="x in inners">{{x}}</div>
 </div>
