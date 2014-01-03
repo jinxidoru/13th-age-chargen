@@ -1,4 +1,4 @@
-angular.module('app').directive('jnWidget',function() {
+define(function(require) {
   return {
     restrict: 'A',
     link: function($scope,elem,attrs) {

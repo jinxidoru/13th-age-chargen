@@ -1,5 +1,6 @@
 "use strict";
 define(function(require) {
+  require('angular-init');
   var injector = angular.element('html').injector();
   var $compile = injector.get('$compile');
 
