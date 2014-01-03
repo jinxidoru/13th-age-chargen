@@ -5,6 +5,11 @@ define(function(require) {
       var name = attrs.jnWidget;
       require(["ngView!"+name],function(Widget) {
         Widget.attach(elem);
+
+        // digest
+        if ( !$scope.$$phase )
+          $scope.$digest();
+
       },function(err) {
         console.error("unable to find widget named `" + name + "`");
         elem.remove();
