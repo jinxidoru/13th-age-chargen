@@ -1,0 +1,19 @@
+<div>
+  <b>Level</b> <span><select ng-model="char.level" ng-options="x for x in [1,2,3,4,5,6,7,8,9,10]"></select></span><br>
+  <b>Class</b> <span><select ng-model="char.cls" ng-options="key as key for (key,value) in classes"></select></span><br>
+  <b>Strength</b> <span>{{char.str}}</span> {{mod(char.str)}}<br>
+  <b>Constitution</b> <span>{{char.con}}</span> {{mod(char.con)}}<br>
+  <b>Dexterity</b> <span>{{char.dex}}</span> {{mod(char.dex)}}<br>
+  <b>Intelligence</b> <span>{{char.int}}</span> {{mod(char.int)}}<br>
+  <b>Wisdom</b> <span>{{char.wis}}</span> {{mod(char.wis)}}<br>
+  <b>Charisma</b> <span>{{char.cha}}</span> {{mod(char.cha)}}<br>
+  <b>Recovery</b> {{char.level}}d{{classDef.recovery}} x {{char.level}} {{mod(char.con)}}<br>
+  <b>HP</b> {{hpmax()}}<br>
+  <b>Staggered</b> {{hpmax(true)}}<br>
+
+  <hr>
+  <b>Points:</b> {{points()}}<br>
+  <b>AC:</b> {{ac()}}<br>
+  <b>PD:</b> {{pd()}}<br>
+  <b>MD:</b> {{md()}}<br>
+</div>
