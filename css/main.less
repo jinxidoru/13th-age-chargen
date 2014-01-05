@@ -33,9 +33,45 @@
     }
   }
 
+  // header bar
   .header {
+    position: relative;
+
     img.logo {
       width: 150px;
+    }
+
+    .entries {
+      div {
+        vertical-align: bottom;
+        position: absolute;
+        border-bottom: 1px solid #ccc;
+        font-size: 200%;
+        top: 18px;
+        left: 160px;
+        width: 300px;
+        color: #333;
+      }
+
+      .race,.level {
+        left: 475px;
+        width: 280px;
+      }
+
+      .class,.level {
+        top: 80px;
+      }
+
+      .label {
+        font-variant: small-caps;
+      }
+
+      .text {
+        display: inline-block;
+        float: right;
+        color: #000;
+        padding-right: 10px;
+      }
     }
   }
 
@@ -149,6 +185,35 @@
         line-height: @textHeight - 3px;
         vertical-align: middle;
         padding-right: 5px;
+      }
+    }
+  }
+
+  // health
+  .health {
+    position: absolute;
+    left: 385px;
+    top: 91px;
+
+    .box {
+      @boxHeight: 50px;
+      text-align: center;
+      display: inline-block;
+      padding-right: 10px;
+
+      div + div {
+        width: 130px;
+        height: @boxHeight;
+        border: 3px solid black;
+        span {
+          height: @boxHeight;
+          line-height: @boxHeight;
+          font-size: 180%;
+          float: right;
+          width: 50%;
+          background: #eee;
+          border-left: 2px dotted black;
+        }
       }
     }
   }

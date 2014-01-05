@@ -1,31 +1,34 @@
 <div class="char-creator">
 
   <div class="ctrls">
-  <b>Level</b> <span class="hidden-select">
-    <span>{{char.level}}</span>
-    <select ng-model="char.level" ng-options="x for x in [1,2,3,4,5,6,7,8,9,10]"></select>
-  </span><br>
-  <b>Class</b> <span class="hidden-select">
-    <span>{{char.cls}}</span>
-    <select ng-model="char.cls" ng-options="key as key for (key,value) in classes"></select>
-  </span><br>
   <b>Recovery</b> {{char.level}}d{{classDef.recovery}} x {{char.level}} {{mod(char.con)}}<br>
-  <b>HP</b> {{hpmax()}}<br>
-  <b>Staggered</b> {{hpmax(true)}}<br>
-
-  <hr>
   <b>Points:</b> {{points()}}<br>
-  <b>AC:</b> {{ac()}}<br>
-  <b>PD:</b> {{pd()}}<br>
-  <b>MD:</b> {{md()}}<br>
-
-  <div>hover: {{hoverStat}}</div>
   <hr>
   </div>
   <div class="sheet">
+
     <div class="header">
       <img class="logo" src="img/13thAgeLogo.jpg">
+      <div class="entries">
+        <div class="name"><span class="label">Name</span></div>
+        <div class="race"><span class="label">Race</span><span class="text">{{char.race}}</span></div>
+        <div class="class">
+          <span class="label">Class</span>
+          <span class="text hidden-select">
+            <span>{{char.cls}}</span>
+            <select ng-model="char.cls" ng-options="key as key for (key,value) in classes"></select>
+          </span>
+        </div>
+        <div class="level">
+          <span class="label">Level</span>
+          <span class="text hidden-select">
+            <span>{{char.level}}</span>
+            <select ng-model="char.level" ng-options="x for x in [1,2,3,4,5,6,7,8,9,10]"></select>
+          </span>
+        </div>
+      </div>
     </div>
+
     <div class="stats">
 
       <!-- abilities -->
@@ -78,8 +81,19 @@
         </div>
       </div>
 
+      <!-- hit points -->
+      <div class="health">
+        <div class="box">
+          <div>HIT POINTS</div>
+          <div><span>{{hpmax()}}</span></div>
+        </div>
+
+        <div class="box">
+          <div>RECOVERIES</div>
+          <div><span>8</span></div>
+        </div>
+      </div>
     </div>
 
   </div>
-
 </div>

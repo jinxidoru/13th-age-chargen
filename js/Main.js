@@ -20,6 +20,7 @@ define(function(require) {
           int: 8,
           cha: 14,
           wis: 16,
+          race: 'Dark Elf',
           cls: 'Cleric'
         };
       }
