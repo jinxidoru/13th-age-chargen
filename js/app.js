@@ -13,7 +13,7 @@ function camelCase(name) { return name.replace(/-([a-z])/g,camelCase_replace); }
 function camelCase_replace(v,x) { return x.toUpperCase(); }
 
 // list of directives
-var directives = ['jn-widget'];
+var directives = ['skew'];
 var paths = _.map(directives,function(x) { return "directives/"+x; });
 
 // initialize angular, including all of the directives
@@ -33,7 +33,7 @@ define('angular-init',paths,function() {
 });
 
 // main execution loop
-requirejs(['ngView!Main'],function(Main) {
+requirejs(['skew!Main'],function(Main) {
   var rootScope = angular.element($("body")).scope();
   rootScope.$apply(function() {
     Main.attach($("div.ng-main"));
