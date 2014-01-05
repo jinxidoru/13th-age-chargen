@@ -27,44 +27,74 @@
   <hr>
   </div>
   <div class="sheet">
-    <table cellspacing="0" class="abilities">
-      <tr>
-        <td>STR</td>
-        <td>CON</td>
-        <td>DEX</td>
-        <td>INT</td>
-        <td>WIS</td>
-        <td>CHA</td>
-      </tr>
-      <tr class="blocks">
-        <td>{{char.str}}</td>
-        <td>{{char.con}}</td>
-        <td>{{char.dex}}</td>
-        <td>{{char.int}}</td>
-        <td>{{char.wis}}</td>
-        <td>{{char.cha}}</td>
-      </tr>
-      <tr class="modifier-only">
-        <td>{{mod(char.str)}}</td>
-        <td>{{mod(char.con)}}</td>
-        <td>{{mod(char.dex)}}</td>
-        <td>{{mod(char.int)}}</td>
-        <td>{{mod(char.wis)}}</td>
-        <td>{{mod(char.cha)}}</td>
-      </tr>
-      <tr class="blocks">
-        <td>{{mod(char.str,true)}}</td>
-        <td>{{mod(char.con,true)}}</td>
-        <td>{{mod(char.dex,true)}}</td>
-        <td>{{mod(char.int,true)}}</td>
-        <td>{{mod(char.wis,true)}}</td>
-        <td>{{mod(char.cha,true)}}</td>
-      </tr>
-      <tr>
-        <td colspan="2"></td>
-        <td class="initiative">INITIATIVE</td>
-      </tr>
-    </table>
+    <div class="header">
+      <img class="logo" src="/img/13thAgeLogo.jpg">
+    </div>
+    <div class="stats">
+
+      <!-- abilities -->
+      <table cellspacing="0" class="abilities">
+        <tr>
+          <td>STR</td>
+          <td>CON</td>
+          <td>DEX</td>
+          <td>INT</td>
+          <td>WIS</td>
+          <td>CHA</td>
+        </tr>
+        <tr class="blocks">
+          <td>{{char.str}}</td>
+          <td>{{char.con}}</td>
+          <td>{{char.dex}}</td>
+          <td>{{char.int}}</td>
+          <td>{{char.wis}}</td>
+          <td>{{char.cha}}</td>
+        </tr>
+        <tr class="modifier-only">
+          <td>{{mod(char.str)}}</td>
+          <td>{{mod(char.con)}}</td>
+          <td>{{mod(char.dex)}}</td>
+          <td>{{mod(char.int)}}</td>
+          <td>{{mod(char.wis)}}</td>
+          <td>{{mod(char.cha)}}</td>
+        </tr>
+        <tr class="blocks">
+          <td>{{mod(char.str,true)}}</td>
+          <td>{{mod(char.con,true)}}</td>
+          <td>{{mod(char.dex,true)}}</td>
+          <td>{{mod(char.int,true)}}</td>
+          <td>{{mod(char.wis,true)}}</td>
+          <td>{{mod(char.cha,true)}}</td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td class="initiative">INITIATIVE</td>
+        </tr>
+      </table>
+
+      <!-- defenses -->
+      <div class="defenses">
+        <div class="defense">
+          <div>Armor Class</div>
+          <div>A<br>C</div>
+          <div>{{ac()}}</div>
+        </div>
+
+        <div class="defense">
+          <div>Physical Defense</div>
+          <div>P<br>D</div>
+          <div>{{pd()}}</div>
+        </div>
+
+        <div class="defense">
+          <div>Mental Defense</div>
+          <div>M<br>D</div>
+          <div>{{md()}}</div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
 </div>
