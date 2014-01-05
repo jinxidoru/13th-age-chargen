@@ -37,25 +37,16 @@ define(function(require) {
         return (Math.floor((val-9)/2));
       }
 
-      function defense(base,v1,v2,v3) {
-        return base + modifier(_.sortBy([v1,v2,v3])[1]) + char.level;
-      }
-
       $scope.hpmax = function(bStaggered) {
         var hp = modifier(char.con) + classDef.hp*hpMultipliers[char.level];
         return bStaggered ? Math.floor(hp/2) : hp;
       }
 
-      $scope.ac = function() {
-        return defense(classDef.ac,char.con,char.wis,char.dex);
-      }
-
-      $scope.pd = function() {
-        return defense(classDef.pd,char.str,char.con,char.dex);
-      }
-
-      $scope.md = function() {
-        return defense(classDef.md,char.int,char.wis,char.cha);
+      $scope.defense = function(type) {
+        var score = _.chain(defenseScores[type]).map(function(x) {
+          return char[x];
+        }).sortBy().value()[1];
+        return classDef[type] + modifier(score) + char.level;
       }
 
       $scope.points = function() {
