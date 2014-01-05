@@ -11,20 +11,17 @@
       <img class="logo" src="img/13thAgeLogo.jpg">
       <div class="entries">
         <div class="name"><span class="label">Name</span></div>
-        <div class="race"><span class="label">Race</span><span class="text">{{char.race}}</span></div>
+        <div class="race">
+          <span class="label">Race</span>
+          <span class="text">{{char.race}}</span>
+        </div>
         <div class="class">
           <span class="label">Class</span>
-          <span class="text hidden-select">
-            <span>{{char.cls}}</span>
-            <select ng-model="char.cls" ng-options="key as key for (key,value) in classes"></select>
-          </span>
+          <span class="text">{{char.cls}}</span>
         </div>
         <div class="level">
           <span class="label">Level</span>
-          <span class="text hidden-select">
-            <span>{{char.level}}</span>
-            <select ng-model="char.level" ng-options="x for x in [1,2,3,4,5,6,7,8,9,10]"></select>
-          </span>
+          <span class="text">{{char.level}}</span>
         </div>
       </div>
     </div>

@@ -4,6 +4,8 @@ define(function(require) {
 
   return {
     controller: function($scope) {
+      $scope.classes = require('data/classes');
+      $scope.levels = _.map(_.range(10),function(x) { return {val:x+1,name:"Level " + (x+1)}; });
 
       // load the character from local storage
       try {
@@ -20,8 +22,8 @@ define(function(require) {
           int: 8,
           cha: 14,
           wis: 16,
-          race: 'Dark Elf',
-          cls: 'Cleric'
+          race: 'Human',
+          cls: 'Barbarian'
         };
       }
 

@@ -10,6 +10,22 @@
   user-select: none;
 }
 
+.absolute(@top,@right,@bottom,@left) {
+  position: absolute;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+}
+
+.print-hide() {
+  @media print { display:none; }
+}
+
+// --------- VARIABLES -----------
+
+@color13thAge: #400602;
+@fontSizeBig: 160%;
 
 
 // -------------------------------
@@ -23,11 +39,7 @@ body {
   .sheet {
     width: 8in;
     height: 10.5in;
-    border: 1px solid #eee;
-
-    @media print {
-      border: 1px solid #fff;
-    }
+    border: 1px solid #fff;
   }
 
   @media print {
@@ -116,7 +128,7 @@ body {
     tr.blocks td {
       height: @height;
       border: 4px solid black;
-      font-size: 180%;
+      font-size: @fontSizeBig;
 
       &.hilite { background: #F3FAB6; }
       &.hilite2 { background: #d9eef2; }
@@ -149,7 +161,7 @@ body {
     left: 380px;
 
     .defense {
-      @topHeight: 15px;
+      @topHeight: 18px;
       @textHeight: 42px;
       text-align: center;
       position: relative;
@@ -219,6 +231,41 @@ body {
           border-left: 2px dotted black;
         }
       }
+    }
+  }
+}
+
+
+.jn-main {
+  @sbWidth: 200px;
+  position: relative;
+  .absolute(0,0,0,0);
+
+  .content {
+    .absolute(0,0,0,@sbWidth);
+    overflow: scroll;
+    @media print {
+      left: 0px;
+      overflow:visible;
+    }
+  }
+
+  & > a {
+    .print-hide;
+  }
+
+  .sidebar {
+    .print-hide;
+    .absolute(0,auto,0,0);
+    width: @sbWidth - 16px;
+    background: @color13thAge;
+    box-shadow: 3px 0px 5px #888;
+    color: white;
+    overflow-y: scroll;
+    padding: 3px;
+
+    select {
+      width: 100%;
     }
   }
 }
