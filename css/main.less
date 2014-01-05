@@ -10,12 +10,16 @@
   user-select: none;
 }
 
-.absolute(@top,@right,@bottom,@left) {
+.top-left(@top,@left) {
   position: absolute;
   top: @top;
+  left: @left;
+}
+
+.absolute(@top,@right,@bottom,@left) {
+  .top-left(@top,@left);
   right: @right;
   bottom: @bottom;
-  left: @left;
 }
 
 .print-hide() {
@@ -59,12 +63,10 @@ body {
 
     .entries {
       div {
+        .top-left(18px,160px);
         vertical-align: bottom;
-        position: absolute;
         border-bottom: 1px solid #ccc;
         font-size: 200%;
-        top: 18px;
-        left: 160px;
         width: 300px;
         color: #333;
       }
@@ -97,19 +99,9 @@ body {
   }
 
 
-  // select is displayed on hover
-  .hidden-select {
-    select { display:none; }
-    &:hover {
-      select { display:inline; }
-      span { display:none; }
-    }
-  }
-
   // ability score table
   .abilities table {
-    position: absolute;
-    left: 50px;
+    .top-left(auto,50px);
     border-collapse: collapse;
     @width: 45px;
     @height: 50px;
@@ -155,10 +147,8 @@ body {
 
   // defenses
   .defenses {
-    position: absolute;
+    .top-left(3px,380px);
     display: inline-block;
-    top: 3px;
-    left: 380px;
 
     .defense {
       @topHeight: 18px;
@@ -178,25 +168,18 @@ body {
       }
 
       :nth-child(2) {
-        position: absolute;
+        .absolute(@topHeight,auto,0,0);
         background: black;
         color: white;
         border-top-left-radius: 10px;
-        left: 0px;
-        top: @topHeight;
-        bottom: 0px;
         width: 20px;
         padding-top: 3px;
         line-height: 120%;
       }
 
       :nth-child(3) {
-        position: absolute;
-        top: @topHeight;
-        left: 17px;
-        right: 0px;
+        .absolute(@topHeight,0,0,17px);
         border: 3px solid black;
-        bottom: 0px;
         text-align: right;
         font-size: 180%;
         line-height: @textHeight - 3px;
@@ -208,9 +191,7 @@ body {
 
   // health
   .health {
-    position: absolute;
-    left: 385px;
-    top: 91px;
+    .top-left(91px,385px);
 
     .box {
       @boxHeight: 50px;
