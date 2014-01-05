@@ -1,3 +1,63 @@
-body {
+.char-creator {
+
+  .sheet {
+    width: 8in;
+    height: 10.5in;
+  }
+
+  @media print {
+    .ctrls {
+      display:none;
+    }
+  }
+
+  // select is displayed on hover
+  .hidden-select {
+    select { display:none; }
+    &:hover {
+      select { display:inline; }
+      span { display:none; }
+    }
+  }
+
+  // ability score table
+  table.abilities {
+    border-collapse: collapse;
+    @size: 50px;
+
+    td {
+      width: @size;
+      text-align: center;
+    }
+
+    tr.modifier-only td {
+      border-left: 2px solid #ccc;
+      border-right: 2px solid #ccc;
+      height: @size/2;
+    }
+
+    tr.blocks td {
+      height: 40px;
+      border: 2px solid black;
+      font-size: 180%;
+    }
+
+    td.initiative {
+      color: white;
+      background: black;
+      font-size: 8px;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+}
+
+
+
+// print settings
+@media print {
+  @page {
+    size: 8.5in 11in;
+  }
 }
 

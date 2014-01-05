@@ -1,6 +1,14 @@
-<div>
-  <b>Level</b> <span><select ng-model="char.level" ng-options="x for x in [1,2,3,4,5,6,7,8,9,10]"></select></span><br>
-  <b>Class</b> <span><select ng-model="char.cls" ng-options="key as key for (key,value) in classes"></select></span><br>
+<div class="char-creator">
+
+  <div class="ctrls">
+  <b>Level</b> <span class="hidden-select">
+    <span>{{char.level}}</span>
+    <select ng-model="char.level" ng-options="x for x in [1,2,3,4,5,6,7,8,9,10]"></select>
+  </span><br>
+  <b>Class</b> <span class="hidden-select">
+    <span>{{char.cls}}</span>
+    <select ng-model="char.cls" ng-options="key as key for (key,value) in classes"></select>
+  </span><br>
   <b>Strength</b> <span>{{char.str}}</span> {{mod(char.str)}}<br>
   <b>Constitution</b> <span>{{char.con}}</span> {{mod(char.con)}}<br>
   <b>Dexterity</b> <span>{{char.dex}}</span> {{mod(char.dex)}}<br>
@@ -16,4 +24,47 @@
   <b>AC:</b> {{ac()}}<br>
   <b>PD:</b> {{pd()}}<br>
   <b>MD:</b> {{md()}}<br>
+  <hr>
+  </div>
+  <div class="sheet">
+    <table cellspacing="0" class="abilities">
+      <tr>
+        <td>STR</td>
+        <td>CON</td>
+        <td>DEX</td>
+        <td>INT</td>
+        <td>WIS</td>
+        <td>CHA</td>
+      </tr>
+      <tr class="blocks">
+        <td>{{char.str}}</td>
+        <td>{{char.con}}</td>
+        <td>{{char.dex}}</td>
+        <td>{{char.int}}</td>
+        <td>{{char.wis}}</td>
+        <td>{{char.cha}}</td>
+      </tr>
+      <tr class="modifier-only">
+        <td>{{mod(char.str)}}</td>
+        <td>{{mod(char.con)}}</td>
+        <td>{{mod(char.dex)}}</td>
+        <td>{{mod(char.int)}}</td>
+        <td>{{mod(char.wis)}}</td>
+        <td>{{mod(char.cha)}}</td>
+      </tr>
+      <tr class="blocks">
+        <td>{{mod(char.str,true)}}</td>
+        <td>{{mod(char.con,true)}}</td>
+        <td>{{mod(char.dex,true)}}</td>
+        <td>{{mod(char.int,true)}}</td>
+        <td>{{mod(char.wis,true)}}</td>
+        <td>{{mod(char.cha,true)}}</td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td class="initiative">INITIATIVE</td>
+      </tr>
+    </table>
+  </div>
+
 </div>

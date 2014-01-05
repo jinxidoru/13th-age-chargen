@@ -66,8 +66,8 @@ define(function(require) {
         });
       }
 
-      $scope.mod = function(val) {
-        var n = modifier(val);
+      $scope.mod = function(val,withLevel) {
+        var n = modifier(val) + (withLevel?char.level:0);
         return ((n>=0) ? "+" : "") + n;
       }
     }
