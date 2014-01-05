@@ -14,6 +14,9 @@ define(function(require) {
       var parentScope = angular.element($el).scope();
       var $scope = parentScope.$new(true);
 
+      // attach the scope
+      initScope(parentScope,$scope,opts.scope,$el);
+
       // invoke the controller
       if ( opts.controller ) {
         var instance = { element:newEl };
@@ -30,6 +33,18 @@ define(function(require) {
       attach: attach
     }
   };
+
+  // populate a new scope using a scope definition
+  function initScope(parent,$scope,decl,$el) {
+    _.each(decl,function(type,name) {
+      var attr = $el.attr(name);
+      if ( type == '=' ) {
+        $scope[name] = parent[attr];
+        parent.$watch(attr,function(val) { $scope[name] = val; });
+        $scope.$watch(name,function(val) { parent[attr] = val; });
+      }
+    });
+  }
 
   // create the plugin
   return {

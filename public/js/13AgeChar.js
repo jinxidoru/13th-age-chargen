@@ -10,20 +10,13 @@ define(function(require) {
   };
 
   return {
+    scope: {
+      "char": '='
+    },
     controller: function($scope) {
       $scope.abilities = ['str','con','dex','int','wis','cha'];
       $scope.hoverStat = null;
-
-      var char = $scope.char = {
-        level: 2,
-        str: 18,
-        con: 12,
-        dex: 10,
-        int: 8,
-        cha: 14,
-        wis: 16,
-        cls: 'Cleric'
-      };
+      var char = $scope.char;
 
       // get the class definition
       var classDef;
