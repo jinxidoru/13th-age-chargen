@@ -24,6 +24,8 @@
   <b>AC:</b> {{ac()}}<br>
   <b>PD:</b> {{pd()}}<br>
   <b>MD:</b> {{md()}}<br>
+
+  <div>hover: {{hoverStat}}</div>
   <hr>
   </div>
   <div class="sheet">
@@ -33,60 +35,49 @@
     <div class="stats">
 
       <!-- abilities -->
-      <table cellspacing="0" class="abilities">
-        <tr>
-          <td>STR</td>
-          <td>CON</td>
-          <td>DEX</td>
-          <td>INT</td>
-          <td>WIS</td>
-          <td>CHA</td>
-        </tr>
-        <tr class="blocks">
-          <td>{{char.str}}</td>
-          <td>{{char.con}}</td>
-          <td>{{char.dex}}</td>
-          <td>{{char.int}}</td>
-          <td>{{char.wis}}</td>
-          <td>{{char.cha}}</td>
-        </tr>
-        <tr class="modifier-only">
-          <td>{{mod(char.str)}}</td>
-          <td>{{mod(char.con)}}</td>
-          <td>{{mod(char.dex)}}</td>
-          <td>{{mod(char.int)}}</td>
-          <td>{{mod(char.wis)}}</td>
-          <td>{{mod(char.cha)}}</td>
-        </tr>
-        <tr class="blocks">
-          <td>{{mod(char.str,true)}}</td>
-          <td>{{mod(char.con,true)}}</td>
-          <td>{{mod(char.dex,true)}}</td>
-          <td>{{mod(char.int,true)}}</td>
-          <td>{{mod(char.wis,true)}}</td>
-          <td>{{mod(char.cha,true)}}</td>
-        </tr>
-        <tr>
-          <td colspan="2"></td>
-          <td class="initiative">INITIATIVE</td>
-        </tr>
-      </table>
+      <div ng-mouseleave="hoverStat=null" class="abilities">
+        <table cellspacing="0">
+          <tr>
+            <td ng-repeat="a in abilities" ng-mouseover="hover(a)">{{a.toUpperCase()}}</td>
+          </tr>
+          <tr class="blocks">
+            <td ng-repeat="a in abilities" ng-mouseover="hover(a)"
+              ng-class="{hilite:a==hilite[1],hilite2:(a==hilite[0] || a==hilite[2])}">{{char[a]}}</td>
+          </tr>
+          <tr class="modifier-only">
+            <td ng-repeat="a in abilities" ng-mouseover="hover(a)">
+              <span ng-if="a != hoverStat">{{mod(char[a])}}</span>
+              <span ng-if="a == hoverStat" class="updown">
+                <span ng-click="inc(a,1)">▲</span>
+                <span ng-click="inc(a,-1)">▼</span>
+              </span>
+            </td>
+          </tr>
+          <tr class="blocks">
+            <td ng-repeat="a in abilities" ng-mouseover="hover(a)">{{mod(char[a],true)}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td class="initiative">INITIATIVE</td>
+          </tr>
+        </table>
+      </div>
 
       <!-- defenses -->
-      <div class="defenses">
-        <div class="defense">
+      <div class="defenses" ng-mouseleave="hiDefense()">
+        <div class="defense" ng-mouseover="hiDefense('ac')">
           <div>Armor Class</div>
           <div>A<br>C</div>
           <div>{{ac()}}</div>
         </div>
 
-        <div class="defense">
+        <div class="defense" ng-mouseover="hiDefense('pd')">
           <div>Physical Defense</div>
           <div>P<br>D</div>
           <div>{{pd()}}</div>
         </div>
 
-        <div class="defense">
+        <div class="defense" ng-mouseover="hiDefense('md')">
           <div>Mental Defense</div>
           <div>M<br>D</div>
           <div>{{md()}}</div>

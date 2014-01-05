@@ -2,8 +2,17 @@
 define(function(require) {
   var hpMultipliers = [0,3,4,5,6,8,10,12,16,20,24];
 
+  // this is the way each defense is calculated
+  var defenseScores = {
+    ac: ['con','wis','dex'],
+    pd: ['str','con','dex'],
+    md: ['int','wis','cha']
+  };
+
   return {
     controller: function($scope) {
+      $scope.abilities = ['str','con','dex','int','wis','cha'];
+      $scope.hoverStat = null;
 
       var char = $scope.char = {
         level: 2,
@@ -69,6 +78,25 @@ define(function(require) {
       $scope.mod = function(val,withLevel) {
         var n = modifier(val) + (withLevel?char.level:0);
         return ((n>=0) ? "+" : "") + n;
+      }
+
+      $scope.hover = function(stat) {
+        $scope.hoverStat = stat;
+      }
+
+      $scope.inc = function(stat,step) {
+        char[stat] += step;
+        char[stat] = Math.max(Math.min(char[stat],18),8);
+      }
+
+      // cause a defense
+      $scope.hilite = [];
+      $scope.hiDefense = function(type) {
+        if ( type == null ) {
+          $scope.hilite = [];
+        } else {
+          $scope.hilite = _.sortBy(defenseScores[type],function(a) { return char[a]; });
+        }
       }
     }
   }
