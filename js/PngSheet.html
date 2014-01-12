@@ -1,6 +1,14 @@
 <div class="png-sheet">
   <img src="/img/char_sheet.png">
 
+  <!-- HEADER -->
+  <div class="header">
+    <div class="name">{{char.name}}</div>
+    <div class="class">{{char.class}}</div>
+    <div class="race">{{char.race}}</div>
+    <div class="level">{{char.level}}</div>
+  </div>
+
   <!-- ABILITIES -->
   <div class="abilities">
     <span ng-repeat="a in abilities">{{char[a]}}</span>

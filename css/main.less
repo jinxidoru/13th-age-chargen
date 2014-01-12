@@ -16,6 +16,13 @@
   left: @left;
 }
 
+.top-right(@top,@right) {
+  position: absolute;
+  top: @top;
+  right: @right;
+  text-align: right;
+}
+
 .absolute(@top,@right,@bottom,@left) {
   .top-left(@top,@left);
   right: @right;
@@ -246,8 +253,9 @@ body {
     overflow-y: scroll;
     padding: 3px;
 
-    select {
-      width: 100%;
+    select,input {
+      width: 90%;
+      margin: 0 5%;
     }
   }
 }
@@ -265,10 +273,16 @@ body {
   background-size: contain;
   font-weight: bold;
   font-size: 22pt;
+  color: #03a;
 
   img {
     width: @width;
     height: @height;
+  }
+
+  @media screen {
+    border: 1px solid #ddd;
+    margin: 10px 5px 15px 5px;
   }
 
   .abilities {
@@ -303,13 +317,27 @@ body {
   }
 
   .hp {
-    .absolute(243px,249px,auto,auto);
+    .top-right(243px,249px);
     font-size: 17pt; 
   }
 
   .recoveries {
-    .absolute(243px,120px,auto,auto);
+    .top-right(243px,120px);
     font-size: 17pt; 
+  }
+
+  .header > div {
+    font-size: 14pt;
+    font-weight: normal;
+    max-width: 185px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &.name { .top-right(51px,293px); }
+    &.class { .top-right(94px,293px); }
+    &.race { .top-right(51px,52px); }
+    &.level { .top-right(94px,52px); }
   }
 }
 

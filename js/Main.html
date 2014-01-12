@@ -1,7 +1,8 @@
 <div class="jn-main">
   <div class="sidebar">
     <select ng-model="char.level" ng-options="x.val as x.name for x in levels"></select>
-    <select ng-model="char.cls" ng-options="key as key for (key,value) in classes"></select>
+    <select ng-model="char.class" ng-options="key as key for (key,value) in classes"></select>
+    <input type="text" ng-model="char.name">
   </div>
   <div class="content">
     <area skew="PngSheet" char="char">
