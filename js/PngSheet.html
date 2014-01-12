@@ -1,0 +1,25 @@
+<div class="png-sheet">
+  <img src="/img/char_sheet.png">
+
+  <!-- ABILITIES -->
+  <div class="abilities">
+    <span ng-repeat="a in abilities">{{char[a]}}</span>
+  </div>
+  <div class="abilities mod">
+    <span ng-repeat="a in abilities">{{char.mod(a)}}</span>
+  </div>
+  <div class="abilities mod-level">
+    <span ng-repeat="a in abilities">{{char.mod(a,true)}}</span>
+  </div>
+
+  <!-- DEFENSES -->
+  <div class="defenses">
+    <span>{{char.ac()}}</span>
+    <span>{{char.pd()}}</span>
+    <span>{{char.md()}}</span>
+  </div>
+
+  <!-- Hit Points -->
+  <div class="hp">{{char.hp()}}</div>
+  <div class="recoveries">8</div>
+</div>

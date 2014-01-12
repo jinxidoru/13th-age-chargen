@@ -252,3 +252,65 @@ body {
   }
 }
 
+
+// ------- PNG SHEET -------
+
+.png-sheet {
+  @width: 769px;
+  @height: 1009px;
+
+  width: @width;
+  height: @height;
+  position: relative;
+  background-size: contain;
+  font-weight: bold;
+  font-size: 22pt;
+
+  img {
+    width: @width;
+    height: @height;
+  }
+
+  .abilities {
+    .top-left(175px,84px);
+
+    span {
+      width: 52px;
+      text-align: center;
+      display: inline-block;
+    }
+
+    &.mod {
+      top: 227px;
+      font-size: 15px;
+      font-weight: normal;
+    }
+
+    &.mod-level {
+      top: 253px;
+      font-size: 17pt;
+    }
+  }
+
+  .defenses {
+    .top-left(165px,399px);
+
+    span {
+      width: 82px;
+      text-align: right;
+      display: inline-block;
+    }
+  }
+
+  .hp {
+    .absolute(243px,249px,auto,auto);
+    font-size: 17pt; 
+  }
+
+  .recoveries {
+    .absolute(243px,120px,auto,auto);
+    font-size: 17pt; 
+  }
+}
+
+

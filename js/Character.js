@@ -27,15 +27,20 @@ define(function(require) {
   Character.prototype = {
 
     //! Calculate the modifier for the given ability.
-    mod: function(abil,withLevel) {
+    modval: function(abil,withLevel) {
       var val = _.isString(abil) ? this[abil] : abil;
-      var mod = Math.floor((val-9)/2) + (withLevel?this.level:0);
+      return Math.floor((val-9)/2) + (withLevel?this.level:0);
+    },
+
+    //! Return the modifier as a string.
+    mod: function(abil,withLevel) {
+      var mod = this.modval(abil,withLevel);
       return ((mod>=0) ? "+" : "") + mod;
     },
 
     //! Calculate the maximum HP
     hp: function(bStaggered) {
-      var hp = this.mod('con') + this.classDef().hp * hpMultipliers[this.level];
+      var hp = this.modval('con') + this.classDef().hp * hpMultipliers[this.level];
       return bStaggered ? Math.floor(hp/2) : hp;
     },
 
