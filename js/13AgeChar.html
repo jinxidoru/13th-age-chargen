@@ -40,7 +40,7 @@
           </tr>
           <tr class="modifier-only">
             <td ng-repeat="a in abilities" ng-mouseover="hover(a)">
-              <span ng-if="a != hoverStat">{{mod(char[a])}}</span>
+              <span ng-if="a != hoverStat">{{char.mod(a)}}</span>
               <span ng-if="a == hoverStat" class="updown">
                 <span ng-click="inc(a,1)">▲</span>
                 <span ng-click="inc(a,-1)">▼</span>
@@ -48,7 +48,7 @@
             </td>
           </tr>
           <tr class="blocks">
-            <td ng-repeat="a in abilities" ng-mouseover="hover(a)">{{mod(char[a],true)}}</td>
+            <td ng-repeat="a in abilities" ng-mouseover="hover(a)">{{char.mod(a,true)}}</td>
           </tr>
           <tr>
             <td colspan="2"></td>
@@ -62,19 +62,19 @@
         <div class="defense" ng-mouseover="hiDefense('ac')">
           <div>Armor Class</div>
           <div>A<br>C</div>
-          <div>{{defense('ac')}}</div>
+          <div>{{char.ac()}}</div>
         </div>
 
         <div class="defense" ng-mouseover="hiDefense('pd')">
           <div>Physical Defense</div>
           <div>P<br>D</div>
-          <div>{{defense('pd')}}</div>
+          <div>{{char.pd()}}</div>
         </div>
 
         <div class="defense" ng-mouseover="hiDefense('md')">
           <div>Mental Defense</div>
           <div>M<br>D</div>
-          <div>{{defense('md')}}</div>
+          <div>{{char.md()}}</div>
         </div>
       </div>
 
@@ -82,7 +82,7 @@
       <div class="health">
         <div class="box">
           <div>HIT POINTS</div>
-          <div><span>{{hpmax()}}</span></div>
+          <div><span>{{char.hp()}}</span></div>
         </div>
 
         <div class="box">

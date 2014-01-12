@@ -1,6 +1,5 @@
 "use strict";
 define(function(require) {
-  var hpMultipliers = [0,3,4,5,6,8,10,12,16,20,24];
 
   // this is the way each defense is calculated
   var defenseScores = {
@@ -21,26 +20,9 @@ define(function(require) {
       // get the class definition
       var classDef;
       var classes = $scope.classes = require('data/classes');
-      $scope.$watch('char.cls',function(cls) {
+      $scope.$watch('char.class',function(cls) {
         $scope.classDef = classDef = cls ? classes[cls] : null;
       });
-
-
-      function modifier(val) {
-        return (Math.floor((val-9)/2));
-      }
-
-      $scope.hpmax = function(bStaggered) {
-        var hp = modifier(char.con) + classDef.hp*hpMultipliers[char.level];
-        return bStaggered ? Math.floor(hp/2) : hp;
-      }
-
-      $scope.defense = function(type) {
-        var score = _.chain(defenseScores[type]).map(function(x) {
-          return char[x];
-        }).sortBy().value()[1];
-        return classDef[type] + modifier(score) + char.level;
-      }
 
       $scope.points = function() {
 
@@ -57,11 +39,6 @@ define(function(require) {
             return sum+(val-14)*2+6;
           return sum+(val-16)*3+10;
         });
-      }
-
-      $scope.mod = function(val,withLevel) {
-        var n = modifier(val) + (withLevel?char.level:0);
-        return ((n>=0) ? "+" : "") + n;
       }
 
       $scope.hover = function(stat) {
